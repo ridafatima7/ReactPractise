@@ -1,5 +1,6 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { BrowserRouter, Link } from "react-router-dom"
+import { useLocation } from "react-router-dom";
 
 const Navbar = () => {
     const navbarStyle = {
@@ -7,8 +8,11 @@ const Navbar = () => {
         justifyContent: 'flex-end',
         alignItems: 'center', // Vertically center content
       };
-    
+    //   const location = useLocation();
+    //   const { pathname } = location;
+    //   const splitLocation = pathname.split("/");
     return (
+        
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <a className="navbar-brand" href="/">Project</a>

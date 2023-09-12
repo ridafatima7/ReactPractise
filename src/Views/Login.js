@@ -117,8 +117,7 @@ const Login = () => {
 
   return (
     <>
-    <Switch>
-        <Route path="/login">
+   
       <Col lg="5" md="10">
         <Card className="bg-secondary shadow border-0">
         
@@ -252,8 +251,7 @@ const Login = () => {
           </Col>
         </Row> */}
       </Col>
-      </Route>
-      </Switch>
+    
     </>
   );
 };
