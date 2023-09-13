@@ -17,10 +17,10 @@
 */
 
 // reactstrap components
-import { Redirect,Link,useHistory,Route, Switch } from 'react-router-dom';
+import { Redirect,Link,Route, Switch } from 'react-router-dom';
 import { useState } from 'react';
+import { InputGroupText as InputGroupAddon} from "reactstrap";
 import axios from 'axios'
-import InputMask from 'react-input-mask';
 import {
   Button,
   Card,
@@ -29,7 +29,6 @@ import {
   FormGroup,
   Form,
   Input,
-  InputGroupAddon,
   InputGroupText,
   InputGroup,
   Row,
@@ -46,74 +45,76 @@ const Register = () => {
   const [usernameMessage,setAlertUsername ] = useState(false);
   const onDismissMessage = () => setAlertMessage(false);
   const onDismissUsername = () => setAlertUsername(false);
-  const history = useHistory();
   const handleSubmit=(e)=>{
     e.preventDefault();
-   
     const name=e.target.elements.name.value;
     const username=e.target.elements.username.value;
     const email=e.target.elements.email.value;
     const password=e.target.elements.password.value;
     const confirm_password=e.target.elements.confirm_password.value;
     const address=e.target.elements.address.value;
-   
-    // axios.post('http://localhost:8000/auth/get_data?name=rida').then(res =>{console.log(res)})
+    console.log(name);
+    console.log(email);
     if(password===confirm_password)
     {
-       axios({
-         method:'post',
-         url:'http://localhost:8000/Test/register?Message=Account Successfully registered',
-         data:{name:name,username:username,email:email,password:password,address:address}
-       })
-      .then(res=>{
-        //  console.log(res);
-        // setRegister(true);
-         if(res.data.indicator === "success")
-         {
-            setRegister(true);
-         }
-         else if(res.data=="Username already exists!")
-         {
-          setError(true);
-          setErrorMessage("Username already exists!");
-         }
-         else if(res.data=="Already have an account")
-         {
-            setError(true);
-            setErrorMessage("Email already exists!");
-         }
-         else if(res.data.message==="Failed to register account.")
-         {
-            setError(true);
-            setErrorMessage("Failed to register account,Try Again!");
-         }
-         else
-         {
-           setErrorMessage(res.data);
-           setError(true);
-         }
-       console.log(res);
+        axios.post('http://localhost:5000/Test', {
+        name,
+        username,
+        email,
+        password, 
+        address
+
       })
-      .catch(error=>{
-        console.log(error);
-       })
-       // was set here !
-       
-      
     }
-    else
-    {
-      setAlertMessage(true);
-      console.log('Please retype same passwords !')
-    }
-    
- }
- if(isregistered)
-    {
-         // return <Redirect to="/auth/login" />;  
-         history.push('/auth/login?Message=AccountRegisterationRequestSent!'); 
-    }
-    
+  }
+//   const handleSubmit=(e)=>{
+//     e.preventDefault();
+   
+//     const name=e.target.elements.name.value;
+//     const username=e.target.elements.username.value;
+//     const email=e.target.elements.email.value;
+//     const password=e.target.elements.password.value;
+//     const confirm_password=e.target.elements.confirm_password.value;
+//     const address=e.target.elements.address.value;
+//     console.log(name);
+//     // axios.post('http://localhost:8000/auth/get_data?name=rida').then(res =>{console.log(res)})
+//     if(password===confirm_password)
+//     {
+//        axios({
+//          method:'post',
+//          url:'http://localhost:5000/register',
+//          data:{name:name,username:username,email:email,password:password,address:address}
+//        })
+//       .then(res=>{
+//         //  console.log(res);
+//         // setRegister(true);
+//          if(res.data.indicator === "success")
+//          {
+//             setRegister(true);
+//          }
+         
+//          else if(res.data.message==="Failed to add user")
+//          {
+//             setError(true);
+//             setErrorMessage("Failed to register account,Try Again!");
+//          }
+//          else
+//          {
+//            setErrorMessage(res.data);
+//            setError(true);
+//          }
+//        console.log(res);
+//       })
+//       .catch(error=>{
+//         console.log(error);
+//        })
+//     }
+//     else
+//     {
+//       setAlertMessage(true);
+//       console.log('Please retype same passwords !')
+//     } 
+//  }
   return (
     <>
     
@@ -186,7 +187,7 @@ const Register = () => {
                   </InputGroupAddon>
                   <Input
                    name="name"
-                   placeholder=" NGO_Name"
+                   placeholder="Name"
                     type="text"
                     required  />
                 </InputGroup>
@@ -314,9 +315,13 @@ const Register = () => {
                 </Col> */}
               {/* </Row> */}
               <div className="text-center">
+                {/* <Button className="mt-4"  color="info" type="submit" >  */}
+                 {/* style={{background:'#f86f2d'}} */}
+                  {/* Create account
+                </Button> */}
                 <Button className="mt-4"  color="info" type="submit" > 
                  {/* style={{background:'#f86f2d'}} */}
-                  Create account
+                 Test
                 </Button>
               </div>
             </Form>

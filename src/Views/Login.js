@@ -1,7 +1,7 @@
-
 import { useState,useEffect} from 'react';
-import { useLocation,Link ,Route, Switch} from 'react-router-dom';
+import { useLocation,Redirect,Link ,Route, Switch} from 'react-router-dom';
 import axios from 'axios'
+import { InputGroupText  as InputGroupAddon} from 'reactstrap';
 import {
   Button,
   Card,
@@ -10,7 +10,6 @@ import {
   FormGroup,
   Form,
   Input,
-  InputGroupAddon,
   InputGroupText,
   InputGroup,
   Row,
@@ -18,7 +17,6 @@ import {
   Alert
 
 } from "reactstrap";
-import { Redirect } from 'react-router-dom';
 const Login = () => {
   const [islogged, setlogin] = useState(false);
   const [error, setError] = useState(false);
@@ -78,11 +76,16 @@ const Login = () => {
        axios({
        method: 'post',
        withCredentials: true,
-       url: 'http://localhost:8000/Test/login',
+       url: 'http://localhost:5000/Test/login',
        data: { email: email, password: password }
        })
       .then(res => {
-        console.log("Password is incorrect")
+        if (res.data.token) {
+          // Token received in the response
+          const token = res.data.token;
+          // Store the token in localStorage or wherever you prefer
+          localStorage.setItem('token', token);
+        }
         if(res.data==="Password is incorrect")
          { console.log("Password is incorrect")
             setError(true)
@@ -93,11 +96,11 @@ const Login = () => {
            setError(true);
            setErrorMessage("Incorrect Email");
          }
-         else 
-         {
-          localStorage.setItem("user", JSON.stringify(res.data))
-          setlogin(true)
-         }
+        //  else 
+        //  {
+        //   localStorage.setItem("user", JSON.stringify(res.data))
+        //   setlogin(true)
+        //  }
          
        })
       .catch(error => {
@@ -108,12 +111,6 @@ const Login = () => {
     }
     
   }
-   const onDismiss = () => setError(false);
-   if (islogged) 
-   {
-     return <Redirect to="/admin/user-profile?Message=LoggedInSuccessfully" />;
-   }
-  
 
   return (
     <>
@@ -125,9 +122,9 @@ const Login = () => {
           <Alert color="success" isOpen={Success} toggle={onDismissSuccess}>
               <strong>!- </strong>{errorMessage}
             </Alert>
-            <Alert color="danger" isOpen={error} toggle={onDismiss}>
+            {/* <Alert color="danger" isOpen={error} toggle={onDismiss}>
               <strong>Error ! </strong>{errorMessage}
-            </Alert>
+            </Alert> */}
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' , paddingTop: '20px' }}>
               <h1 style={{color:'blue'}}>Sign in</h1>
             </div>
