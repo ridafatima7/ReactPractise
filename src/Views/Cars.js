@@ -27,6 +27,8 @@ const Cars = () => {
   const [usernameMessage,setAlertUsername ] = useState(false);
   const onDismissMessage = () => setAlertMessage(false);
   const onDismissUsername = () => setAlertUsername(false);
+  const token = localStorage.getItem('token');
+
   const handleSubmit=(e)=>{
     e.preventDefault();
    
@@ -35,11 +37,21 @@ const Cars = () => {
     const Price=e.target.elements.Price.value;
     const model=e.target.elements.model.value;
     const color=e.target.elements.color.value;
-       axios({
-         method:'post',
-         url:'http://localhost:5000/Cars/addCar',
-         data:{car:car,Id:Id,Price:Price,model:model,color:color}
-       })
+    axios.get('http://localhost:5000/addcar', {
+
+      params: {
+        car: car,
+        Id: Id,
+        Price: Price,
+        model: model,
+        color: color
+      },
+      headers: 
+      {
+        Authorization: `Bearer ${token}`,
+      }
+    })
+    
       .then(res=>{
         
          if(res.data.indicator === "success")
@@ -166,7 +178,7 @@ const Cars = () => {
                   <Input
                     name="Price"
                     placeholder="Price"
-                    type="email"
+                    type="text"
                     required
                   />
                 </InputGroup>
@@ -204,7 +216,7 @@ const Cars = () => {
               </FormGroup>
               <div className="text-center">
                 <Button className="mt-4"  color="info" type="submit" > 
-                  Create account
+                  Add Information
                 </Button>
               </div>
             </Form>

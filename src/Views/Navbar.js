@@ -31,11 +31,16 @@ const Navbar = () => {
                     <div style={navbarStyle}>
                     <Link to="/login" className="btn btn-primary">
                      Login
-                  </Link>
-                  <Link to="/register" className="btn btn-primary">
-                   Register
-                 </Link>
-                 </div>
+                    </Link>
+                    <Link to="/register" className="btn btn-primary">
+                    Register
+                    </Link>
+                    <Link to="/deletecar" className="btn btn-primary">
+                  Delete
+                    </Link>
+                    <Link to="/updatecar" className="btn btn-primary">Update
+                    </Link>
+                   </div>
                     {/* <div>
                         <button  className="btn btn-primary">Login</button>                
                     </div>

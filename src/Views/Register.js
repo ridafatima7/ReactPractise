@@ -57,13 +57,14 @@ const Register = () => {
     console.log(email);
     if(password===confirm_password)
     {
-        axios.post('http://localhost:5000/Test', {
-        name,
-        username,
-        email,
-        password, 
-        address
-
+        axios.get('http://localhost:5000/Test',  {
+          params: {
+            name,
+            username,
+            email,
+            password,
+            address
+          }
       })
     }
   }

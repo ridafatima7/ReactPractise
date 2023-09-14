@@ -1,5 +1,5 @@
 import { useState,useEffect} from 'react';
-import { useLocation,Redirect,Link ,Route, Switch} from 'react-router-dom';
+import { useLocation,Redirect,Link ,Route, Switch, useNavigate} from 'react-router-dom';
 import axios from 'axios'
 import { InputGroupText  as InputGroupAddon} from 'reactstrap';
 import {
@@ -25,6 +25,7 @@ const Login = () => {
   const [errorMessage ,setErrorMessage]=useState("")
   const location = useLocation();
   const [show, setShow] = useState(false);
+  const navigate = useNavigate();
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
     const message = queryParams.get('Message');
@@ -53,6 +54,7 @@ const Login = () => {
     e.preventDefault();
     const email = e.target.elements.email.value;
     const password = e.target.elements.password.value;
+    
     if( email === '' || password==''){
       if(email==='' &&  password=='')
       {
@@ -73,18 +75,17 @@ const Login = () => {
     else
     {
        // axios.post('http://localhost:8000/auth/get_data?name=rida').then(res =>{console.log(res)})
-       axios({
-       method: 'post',
-       withCredentials: true,
-       url: 'http://localhost:5000/Test/login',
-       data: { email: email, password: password }
-       })
+       axios.get('http://localhost:5000/login',  {
+          params: {  
+            email,
+            password       
+          }
+      })
       .then(res => {
         if (res.data.token) {
-          // Token received in the response
           const token = res.data.token;
-          // Store the token in localStorage or wherever you prefer
           localStorage.setItem('token', token);
+          navigate('/addcar');
         }
         if(res.data==="Password is incorrect")
          { console.log("Password is incorrect")
