@@ -4,10 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from './Views/Navbar';
 import Login from './Views/Login';
 import Register from './Views/Register';
-import DeleteCar from './Views/DeleteCar';
 import Cars from './Views/Cars';
 import Table from './Views/ShowTable';
-import UpdateCars from './Views/UpdateCar';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router,Routes,Route } from 'react-router-dom';
 
@@ -28,14 +26,6 @@ function App() {
     </Routes>
     <Routes>
       <Route path="/addcar" element={<Cars/>}>
-      </Route>
-    </Routes>
-    <Routes>
-      <Route path="/deletecar" element={<DeleteCar/>}>
-      </Route>
-    </Routes>
-    <Routes>
-      <Route path="/updatecar" element={<UpdateCars/>}>
       </Route>
     </Routes>
     <Routes>

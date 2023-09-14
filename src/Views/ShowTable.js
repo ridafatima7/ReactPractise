@@ -184,13 +184,8 @@ GetInformation();
         Authorization: `Token ${token}`,
       }
     })
-    // axios({     
-    //   method:'get',
-    //   url:"http://localhost:2000/updatecars",
-    //   data:formData,
-    // })
     .then(res=>{
-      if(res.data == "success")
+      if(res.data.indicator == "success")
       {
         seteditSuccess(true); 
         GetInformation();
@@ -198,7 +193,7 @@ GetInformation();
       }
       else
       {
-        setErrorMessage(res.data);
+        setErrorMessage(res.data.error);
         setError(true);
       }
       setEditModal(!editmodal); 
