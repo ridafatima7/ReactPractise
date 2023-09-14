@@ -57,7 +57,7 @@ const Register = () => {
     console.log(email);
     if(password===confirm_password)
     {
-        axios.get('http://localhost:5000/Test',  {
+        axios.get('http://localhost:2000/Test',  {
           params: {
             name,
             username,
@@ -120,7 +120,7 @@ const Register = () => {
     <>
     
       <Col lg="6" md="8">
-        <Card className="bg-secondary shadow border-0">
+        <Card className="bg-info shadow border-0">
           {/* <CardHeader className="bg-transparent pb-5"> */}
             {/* <div className="text-muted text-center mt-2 mb-4">
               <small>Sign up with</small>
@@ -173,7 +173,7 @@ const Register = () => {
               <strong> {errorMessage}</strong> 
             </Alert>
             {/* <div style={{ }}> */}
-              <h1 style={{color:'blue', display: 'flex', justifyContent: 'center', alignItems: 'center' , paddingTop: '40px'}}>Register </h1>
+              <h1 style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' , paddingTop: '40px'}} color='secndary'>Register </h1>
             {/* </div> */}
             <div className="text-center text-muted mb-4">
               <small>sign up with credentials</small>
@@ -320,9 +320,9 @@ const Register = () => {
                  {/* style={{background:'#f86f2d'}} */}
                   {/* Create account
                 </Button> */}
-                <Button className="mt-4"  color="info" type="submit" > 
+                <Button className="mt-4"  color="dark" type="submit" > 
                  {/* style={{background:'#f86f2d'}} */}
-                 Test
+                 Register
                 </Button>
               </div>
             </Form>

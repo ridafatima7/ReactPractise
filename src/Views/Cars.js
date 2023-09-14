@@ -37,7 +37,7 @@ const Cars = () => {
     const Price=e.target.elements.Price.value;
     const model=e.target.elements.model.value;
     const color=e.target.elements.color.value;
-    axios.get('http://localhost:5000/addcar', {
+    axios.get('http://localhost:2000/addcar', {
 
       params: {
         car: car,
@@ -48,7 +48,7 @@ const Cars = () => {
       },
       headers: 
       {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Token ${token}`,
       }
     })
     
@@ -81,7 +81,7 @@ const Cars = () => {
     <>
     
       <Col lg="6" md="8">
-        <Card className="bg-secondary shadow border-0">
+        <Card className="bg-info shadow border-0">
           {/* <CardHeader className="bg-transparent pb-5"> */}
             {/* <div className="text-muted text-center mt-2 mb-4">
               <small>Sign up with</small>
@@ -134,11 +134,11 @@ const Cars = () => {
               <strong> {errorMessage}</strong> 
             </Alert>
             {/* <div style={{ }}> */}
-              <h1 style={{color:'blue', display: 'flex', justifyContent: 'center', alignItems: 'center' , paddingTop: '40px'}}>Add car </h1>
+              <h1 style={{display: 'flex', justifyContent: 'center', alignItems: 'center' , paddingTop: '40px'}} color= 'info'>Add Car </h1>
             {/* </div> */}
-            <div className="text-center text-muted mb-4">
+            {/* <div className="text-center text-muted mb-4">
               <small>Cars</small>
-            </div>
+            </div> */}
             <Form role="form" onSubmit={handleSubmit}>
               <FormGroup>
                 <InputGroup className="input-group-alternative mb-3">
@@ -215,7 +215,7 @@ const Cars = () => {
                 </InputGroup>
               </FormGroup>
               <div className="text-center">
-                <Button className="mt-4"  color="info" type="submit" > 
+                <Button className="mt-4"  color="dark" type="submit" > 
                   Add Information
                 </Button>
               </div>

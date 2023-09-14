@@ -35,11 +35,15 @@ const Navbar = () => {
                     <Link to="/register" className="btn btn-primary">
                     Register
                     </Link>
-                    <Link to="/deletecar" className="btn btn-primary">
+                    <Link to="/table" className="btn btn-primary">
+                    Show Data
+                    </Link>
+                    {/* <Link to="/deletecar" className="btn btn-primary">
                   Delete
                     </Link>
-                    <Link to="/updatecar" className="btn btn-primary">Update
-                    </Link>
+                    <Link to="/updatecar" className="btn btn-primary">
+                    Update
+                    </Link> */}
                    </div>
                     {/* <div>
                         <button  className="btn btn-primary">Login</button>                

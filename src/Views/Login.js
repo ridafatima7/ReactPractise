@@ -75,7 +75,7 @@ const Login = () => {
     else
     {
        // axios.post('http://localhost:8000/auth/get_data?name=rida').then(res =>{console.log(res)})
-       axios.get('http://localhost:5000/login',  {
+       axios.get('http://localhost:2000/login',  {
           params: {  
             email,
             password       
@@ -112,12 +112,12 @@ const Login = () => {
     }
     
   }
-
+  
   return (
     <>
    
       <Col lg="5" md="10">
-        <Card className="bg-secondary shadow border-0">
+        <Card className="bg-info shadow border-0">
         
           <CardBody className="px-lg-5 ">
           <Alert color="success" isOpen={Success} toggle={onDismissSuccess}>
@@ -127,7 +127,7 @@ const Login = () => {
               <strong>Error ! </strong>{errorMessage}
             </Alert> */}
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' , paddingTop: '20px' }}>
-              <h1 style={{color:'blue'}}>Sign in</h1>
+              <h1  color="secondary">Sign in</h1>
             </div>
             {/* <CardHeader className="bg-transparent pb-5"> */}
             {/* <div className="text-muted text-center mt-2 mb-3">
@@ -220,7 +220,7 @@ const Login = () => {
                 </label>
               </div> */}
               <div className="text-center">
-                <Button className="my-4" color='info' type="submit">
+                <Button className="my-4" color='dark' type="submit">
                   Sign in
                 </Button>
               </div>
